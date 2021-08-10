@@ -26,7 +26,7 @@ while prompt_user:
     fizz = input("Enter the word you want to appear instead of 'Fizz!'\n")
     buzz = input("Enter the word you want to appear instead of 'Buzz!'\n")
 
-# Checks the next hundred numbers from input number
+# Checks the next ten numbers from input number
 for x in range(number, number+10):
     if (x % 3 == 0) and (x % 5 == 0):
         print(f"{fizz}{buzz}")
