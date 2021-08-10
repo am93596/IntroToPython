@@ -44,26 +44,30 @@
 #     print("Please specify the correct film rating: U, PG, 12A, 15, or 18!")
 # END Kieron's code
 
-validInt = False
 age = None
+film_cert = None
+restriction_message = "You are too young to watch this film"
+go_ahead_message = "You can watch this film"
 
-while not validInt:
+prompt_user_for_age = True
+while prompt_user_for_age:
     age = input("What is your age?\t")
     if age.isdigit():
-        validInt = True
+        if int(age) < 120:
+            age = int(age)
+            prompt_user_for_age = False
+        else:
+            print("Don't be silly!")
     else:
         print("Please input your age as an integer")
 
-int_age = int(age)
-
 validCertList = ["U", "PG", "12A", "15", "18"]
-validCert = False
-film_cert = None
-
-while not validCert:
+prompt_user_for_cert = True
+while prompt_user_for_cert:
     film_cert = input("What is the film rating?\t")
     if film_cert.upper() in validCertList:
-        validCert = True
+        film_cert = film_cert.upper()
+        prompt_user_for_cert = False
     else:
         print("Please input the correct film rating: U, PG, 12A, 15, or 18")
 
@@ -72,22 +76,22 @@ print("Loading...")
 if film_cert == "U":
     print("You can watch this film")
 elif film_cert == "PG":
-    if int_age >= 18:
+    if age >= 18:
         print("You can watch this film")
     else:
         print("You can only watch this if you are supervised by adults")
 elif film_cert == "12A":
-    if int_age >= 12:
+    if age >= 12:
         print("You can watch this film")
     else:
         print("You are too young to watch this film")
 elif film_cert == "15":
-    if int_age >= 15:
+    if age >= 15:
         print("You can watch this film")
     else:
         print("You are too young to watch this film")
 else:
-    if int_age >= 18:
+    if age >= 18:
         print("You can watch this film")
     else:
         print("You are too young to watch this film")
