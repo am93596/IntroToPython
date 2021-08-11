@@ -1,0 +1,3 @@
+from module_with_functions_to_import import important_function
+
+important_function()

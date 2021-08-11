@@ -33,21 +33,30 @@ class Product:
         self.price = price
         self.brand = brand
 
+    def __repr__(self):
+        return f"{self.name} ({self.brand}): £{self.price}"
+
 
 class ShoppingCart:
     def __init__(self):
-        self.__contents = []
+        self.contents = []
 
     def add_to_cart(self, item: Product):
-        self.__contents.append(item)
+        self.contents.append(item)
 
     def show_cart(self):
-        for product in self.__contents:
+        for product in self.contents:
             print(f"{product.name} from {product.brand}: £{product.price:.2f}")
         print()
 
     def get_cart_total(self):
         cart_total = 0.0
-        for product in self.__contents:
+        for product in self.contents:
             cart_total += product.price
         print(f"Total: £{cart_total:.2f}\n")
+
+if __name__ == "__main__":
+    cart = ShoppingCart()
+    cart.add_to_cart(Product("Lemonade", 1.79, "ALDI"))
+    cart.show_cart()
+    print(cart.contents)
