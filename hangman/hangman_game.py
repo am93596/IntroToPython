@@ -10,6 +10,7 @@ def randomly_select_word():
     return random.choice(word_list)
 
 
+# function that finds the checks for the guessed letter in the word and returns letter positions
 def find_letters_in_word(letter_guess, game_word):
     letter_positions = []
     for index, char in enumerate(game_word):
@@ -18,6 +19,8 @@ def find_letters_in_word(letter_guess, game_word):
     return letter_positions
 
 
+# function that processes guess; returns the board populated with correct guess,
+# or returns the original board if wrong
 def process_guess(letter, game_word, updated_board):
     positions = find_letters_in_word(letter, game_word)
     if positions:
@@ -25,7 +28,7 @@ def process_guess(letter, game_word, updated_board):
             updated_board = updated_board[:p] + letter + updated_board[p+1:]
         return updated_board
     else:
-        print("Wrong! Guess again.")
+        print("Wrong! Guess again.\n")
         return updated_board
 
 
@@ -72,9 +75,14 @@ board = '_' * len(word)
 lives = 3
 already_guessed = []
 print(board)
-
-next_guess = input_guess(already_guessed)
-board = process_guess(next_guess, word, board)
-print(f"Board: {board}")
-print(f"Lives: {lives}")
-print(word)
+while lives > 0:
+    next_guess = input_guess(already_guessed)
+    already_guessed.append(next_guess)  # add next_guess to already_guessed after input_guess line
+    updated_board = process_guess(next_guess, word, board)
+    if updated_board == board:
+        reduce_lives(lives)
+    else:
+        print(f"Board: {updated_board}")
+        print(f"Lives: {lives}")
+        print(word)
+    updated_board = board

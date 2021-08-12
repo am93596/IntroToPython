@@ -6,16 +6,21 @@ class Car:
         return self._current_speed
 
     def accelerate(self, increase_by):
-        if (self._current_speed+increase_by) <= self._maximum_speed:
-            self._current_speed += increase_by
-        else:
-            print("\nMax speed reached. Cannot increase speed further.\n")
+        print("Vrooom!")
+        new_speed = self._current_speed + increase_by
+        self._current_speed = min(self._maximum_speed, new_speed)
+        # if (self._current_speed+increase_by) <= self._maximum_speed:
+        #     self._current_speed += increase_by
+        # else:
+        #     print("\nMax speed reached. Cannot increase speed further.\n")
 
     def decelerate(self, decrease_by):
-        if (self._current_speed-decrease_by) >= 0:
-            self._current_speed -= decrease_by
-        else:
-            print("\nCar is stationary. Cannot slow down further.\n")
+        new_speed = self._current_speed - decrease_by
+        self._current_speed = max(0, new_speed)
+        # if (self._current_speed-decrease_by) >= 0:
+        #     self._current_speed -= decrease_by
+        # else:
+        #     print("\nCar is stationary. Cannot slow down further.\n")
 
 
 car1 = Car()
@@ -24,5 +29,6 @@ car1.accelerate(102)
 print(car1.check_current_speed())
 car1.decelerate(100)
 print(car1.check_current_speed())
+car1.accelerate(23)
 car1.decelerate(2)
 print(car1.check_current_speed())
