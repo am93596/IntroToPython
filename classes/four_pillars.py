@@ -101,7 +101,7 @@
 # Scrabble Checker Object
 # Initialise it with a string of 7 random letters - Done!
     # Option of providing some letters, and the rest randomly generated
-# A method to check that a submitted word can be made from those tiles
+# A method to check that a submitted word can be made from those tiles - Done!
 # A method to return the score for a submitted word
 # A method to use the methods above to check a word is valid
 # and if it is, return the score for that word
@@ -130,7 +130,12 @@ class ScrabbleChecker:
         print(f"Letters present: {letters_present}")
         print(f"Word made: {word_made}")
 
+    def return_score(self, word):   # scrabble scores in alpha order: 1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10
+        pass
+        # make a list w/ alphabet, then list w/ scrabble scores
+        # make a dictionary with alphabet as keys and scrabble scores as values
+
 
 sc = ScrabbleChecker()
 print(sc.random_letters)
-sc.check_if_word_can_be_created("are")
+sc.check_if_word_can_be_created("eta")
