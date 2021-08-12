@@ -114,6 +114,23 @@ class ScrabbleChecker:
         list_of_random_letters = random.choices(alphabet, k=7)
         self.random_letters = ''.join(list_of_random_letters)
 
+    def check_if_word_can_be_created(self, input_word):
+        input_word = input_word.upper()
+        letters_present = 0
+        word_made = False
+        for letter in input_word:
+            if letter in self.random_letters:
+                print(f"Letter {letter} is present!")
+                letters_present += 1
+            else:
+                print(f"Letter {letter} not found")
+        if letters_present == len(input_word):
+            word_made = True
+        print(f"Finished checking word {input_word} against {self.random_letters}!")
+        print(f"Letters present: {letters_present}")
+        print(f"Word made: {word_made}")
+
 
 sc = ScrabbleChecker()
 print(sc.random_letters)
+sc.check_if_word_can_be_created("are")
