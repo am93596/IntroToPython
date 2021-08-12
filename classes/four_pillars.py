@@ -5,37 +5,37 @@
 # Inheritance
 # Polymorphism
 
-class Animal:
-    def __init__(self):
-        self.alive = True
-
-    def hunt(self):
-        print("Searching for food")
-
-    def move(self):
-        print("Moving...")
-
-
-class Mammal(Animal):
-    def __init__(self):
-        super().__init__()
-
-    def breed(self):
-        print("Giving birth to live young")
-
-
-class Platypus(Mammal):
-    def __init__(self):
-        super().__init__()
-
-    def breed(self):
-        print("Laying eggs")
-
-
-perry = Platypus()
-perry.breed()
-m = Mammal()
-m.breed()
+# class Animal:
+#     def __init__(self):
+#         self.alive = True
+#
+#     def hunt(self):
+#         print("Searching for food")
+#
+#     def move(self):
+#         print("Moving...")
+#
+#
+# class Mammal(Animal):
+#     def __init__(self):
+#         super().__init__()
+#
+#     def breed(self):
+#         print("Giving birth to live young")
+#
+#
+# class Platypus(Mammal):
+#     def __init__(self):
+#         super().__init__()
+#
+#     def breed(self):
+#         print("Laying eggs")
+#
+#
+# perry = Platypus()
+# perry.breed()
+# m = Mammal()
+# m.breed()
 
 # METHOD OVERLOADING (Polymorphism)
 # def add(int1, int2):
@@ -97,3 +97,23 @@ m.breed()
 # s = BlueSquare(10)
 # print(s.colour)
 # print(s.get_area())
+
+# Scrabble Checker Object
+# Initialise it with a string of 7 random letters - Done!
+    # Option of providing some letters, and the rest randomly generated
+# A method to check that a submitted word can be made from those tiles
+# A method to return the score for a submitted word
+# A method to use the methods above to check a word is valid
+# and if it is, return the score for that word
+import random
+
+
+class ScrabbleChecker:
+    def __init__(self):
+        alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        list_of_random_letters = random.choices(alphabet, k=7)
+        self.random_letters = ''.join(list_of_random_letters)
+
+
+sc = ScrabbleChecker()
+print(sc.random_letters)
