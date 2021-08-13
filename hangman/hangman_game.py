@@ -10,6 +10,18 @@ def randomly_select_word():
     return random.choice(word_list)
 
 
+# function that takes input guesses
+def input_guess(used_guesses):
+    input_verified = False
+    guess = None
+    while not input_verified:
+        guess = input("What is your guess?\n")
+        if verify_input(guess) and not already_used(guess, used_guesses):
+            input_verified = True
+            guess = guess.upper()
+    return guess
+
+
 # function that finds the checks for the guessed letter in the word and returns letter positions
 def find_letters_in_word(letter_guess, game_word):
     letter_positions = []
@@ -32,18 +44,6 @@ def process_guess(letter, game_word, updated_board):
         return updated_board
 
 
-# function that takes input guesses
-def input_guess(used_guesses):
-    input_verified = False
-    guess = None
-    while not input_verified:
-        guess = input("What is your guess?\n")
-        if verify_input(guess) and not already_used(guess, used_guesses):
-            input_verified = True
-            guess = guess.upper()
-    return guess
-
-
 # function that verifies the input is 1 letter
 def verify_input(guess):
     print("Checking input...\n")
@@ -64,25 +64,21 @@ def already_used(guess, used_guesses):
         return False
 
 
-# function that reduces lives when a guess is wrong
-def reduce_lives(current_lives):
-    return current_lives - 1
-
-
 # GAME RUNS FROM HERE
 word = randomly_select_word()
 board = '_' * len(word)
 lives = 3
 already_guessed = []
-print(board)
+
 while lives > 0:
+    print(f"Board: {board}")
+    print(f"Lives: {lives}")
     next_guess = input_guess(already_guessed)
-    already_guessed.append(next_guess)  # add next_guess to already_guessed after input_guess line
-    updated_board = process_guess(next_guess, word, board)
-    if updated_board == board:
-        reduce_lives(lives)
-    else:
-        print(f"Board: {updated_board}")
-        print(f"Lives: {lives}")
-        print(word)
-    updated_board = board
+    already_guessed.append(next_guess)
+    new_board = process_guess(next_guess, word, board)
+    if new_board == board:
+        lives -= 1
+    board = new_board
+    # put in a function that checks if they guessed the full word
+
+print("Game Over!")
