@@ -63,6 +63,9 @@
 # print(sc.random_letters)
 # sc.check_if_word_can_be_created("eta")
 
+def word_created(input_string: str, random_letters: str) -> bool:
+    pass
+
 def word_score(word: str) -> int:
     one = "AEILNORSTU"
     two = "DG"
