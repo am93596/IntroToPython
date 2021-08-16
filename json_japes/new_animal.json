@@ -1,0 +1,10 @@
+{
+  "name": "Hodgepodge",
+  "legs": 5,
+  "sound_made": "Rawr!",
+  "features": [
+    "Sleeping",
+    "Eating",
+    "Being grumpy"
+  ]
+}
